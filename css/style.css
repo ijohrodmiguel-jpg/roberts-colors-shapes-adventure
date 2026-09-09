@@ -1,0 +1,1341 @@
+/* Robert's Colors & Shapes Adventure
+   Step 1: Responsive booklet foundation
+*/
+
+:root {
+  --cream: #fff4df;
+  --cream-dark: #f6e6c8;
+  --blue: #0754a6;
+  --orange: #f47b20;
+  --text: #242424;
+  --white: #ffffff;
+  --border: #e0cda9;
+  --success: #238636;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+  line-height: 1.5;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 14px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 4px solid #222;
+  outline-offset: 3px;
+}
+
+#booklet {
+  width: min(100%, 900px);
+  margin: 0 auto;
+  padding: 20px 14px 10px;
+}
+
+.page {
+  display: none;
+  width: 100%;
+  min-height: 620px;
+  padding: clamp(22px, 5vw, 55px);
+  border: 2px solid var(--border);
+  border-radius: 24px;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      rgba(255,255,255,0.20) 0,
+      rgba(255,255,255,0.20) 2px,
+      transparent 2px,
+      transparent 10px
+    ),
+    var(--cream);
+}
+
+.page.active {
+  display: block;
+}
+
+.page-content {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1,
+h2 {
+  margin: 0 0 14px;
+  color: var(--blue);
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 3.1rem);
+}
+
+h2 {
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.eyebrow,
+.instruction,
+.subtitle,
+.age-text,
+.reading-time,
+.parent-tip,
+.celebration-text,
+.closing {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.eyebrow {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.age-text {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.placeholder-character {
+  display: grid;
+  place-items: center;
+  width: min(45vw, 220px);
+  aspect-ratio: 1;
+  margin: 30px auto;
+  border: 3px dashed var(--border);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.45);
+  font-size: clamp(4rem, 14vw, 7rem);
+}
+
+.celebration {
+  font-size: clamp(4rem, 15vw, 8rem);
+}
+
+.primary-button {
+  padding: 12px 24px;
+  color: var(--white);
+  background: var(--blue);
+  font-weight: 800;
+}
+
+.illustration-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 220px;
+  margin: 24px 0;
+  border: 2px dashed var(--border);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.4);
+  font-weight: 700;
+}
+
+.story-text {
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+}
+
+.story-text p {
+  margin: 6px 0;
+}
+
+.reading-time {
+  display: grid;
+  gap: 4px;
+  margin-top: 28px;
+}
+
+.activity-placeholder {
+  margin-top: 30px;
+  padding: 28px 20px;
+  border: 2px dashed var(--border);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.45);
+}
+
+.guide-list {
+  max-width: 700px;
+  margin: 28px auto;
+  padding-left: 30px;
+  text-align: left;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+}
+
+.guide-list li {
+  margin-bottom: 18px;
+}
+
+.parent-tip {
+  margin: 28px auto 0;
+  max-width: 680px;
+}
+
+.certificate {
+  max-width: 600px;
+  margin: 28px auto;
+  padding: 28px 20px;
+  border: 3px solid #c99a3d;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.65);
+}
+
+.certificate input {
+  width: min(100%, 420px);
+  min-height: 48px;
+  margin: 8px auto 18px;
+  padding: 10px 12px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--white);
+}
+
+.certificate label {
+  font-weight: 700;
+}
+
+.celebration-text {
+  font-size: 1.5rem;
+}
+
+.closing {
+  font-size: 1.1rem;
+}
+
+.book-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  width: min(100%, 900px);
+  margin: 14px auto 24px;
+  padding: 0 14px;
+}
+
+.book-navigation button {
+  min-width: 120px;
+  padding: 10px 18px;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.book-navigation button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#pageIndicator {
+  min-width: 100px;
+  text-align: center;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  #booklet {
+    padding: 10px 8px 6px;
+  }
+
+  .page {
+    min-height: auto;
+    padding: 22px 15px;
+    border-radius: 18px;
+  }
+
+  .book-navigation {
+    gap: 8px;
+  }
+
+  .book-navigation button {
+    flex: 1 1 120px;
+  }
+
+  #pageIndicator {
+    order: -1;
+    flex-basis: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* STEP 2: Original Robert cover artwork */
+.cover-page {
+  padding: clamp(8px, 2vw, 18px);
+  background: var(--cream);
+}
+
+.cover-content {
+  max-width: 768px;
+}
+
+.cover-art-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.cover-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+.cover-start {
+  position: absolute;
+  left: 50%;
+  bottom: 3.2%;
+  transform: translateX(-50%);
+  min-width: 190px;
+  padding: 12px 20px;
+  color: #fff;
+  background: var(--blue);
+  border: 2px solid #fff;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 600px) {
+  .cover-page {
+    padding: 5px;
+  }
+
+  .cover-art {
+    border-radius: 10px;
+  }
+
+  .cover-start {
+    min-width: 165px;
+    bottom: 3%;
+    padding: 10px 15px;
+  }
+}
+
+/* STEP 3: Original Robert story page artwork */
+.story-page {
+  padding: clamp(6px, 1.5vw, 14px);
+}
+
+.story-content {
+  max-width: 768px;
+}
+
+.story-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+@media (max-width: 600px) {
+  .story-page {
+    padding: 4px;
+  }
+
+  .story-art {
+    border-radius: 10px;
+  }
+}
+
+/* PAGE 3 FINAL INTERACTION FIX */
+.colors-page {
+  padding: clamp(4px, 1vw, 10px);
+}
+
+.colors-content {
+  max-width: 768px;
+}
+
+.original-page-interactive {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.original-page-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hotspot-row {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.image-hotspot {
+  position: absolute;
+  display: block;
+  min-width: 42px;
+  min-height: 42px;
+  margin: 0;
+  padding: 0;
+  border: 3px solid transparent;
+  border-radius: 14px;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 20;
+}
+
+.image-hotspot:hover {
+  border-color: rgba(7,84,166,0.55);
+  background: rgba(255,255,255,0.08);
+}
+
+.image-hotspot:active {
+  transform: scale(0.96);
+}
+
+.image-hotspot:focus-visible {
+  border-color: var(--blue);
+  background: rgba(7,84,166,0.12);
+}
+
+.image-hotspot.wrong {
+  border-color: #c62828;
+  background: rgba(198,40,40,0.16);
+}
+
+.image-hotspot.correct {
+  border-color: #238636;
+  background: rgba(35,134,54,0.16);
+}
+
+.color-feedback {
+  min-height: 30px;
+  margin: 8px auto 0;
+  font-weight: 900;
+  text-align: center;
+}
+
+.color-feedback.try {
+  color: #b33a00;
+}
+
+.cover-start {
+  z-index: 10;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+  .original-page-interactive {
+    border-radius: 10px;
+  }
+
+  .image-hotspot {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+/* Page 3: hide the printed "Great job!" until the child actually completes the activity. */
+.completion-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 8.5%;
+  z-index: 30;
+  background: var(--cream);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.completion-cover.revealed {
+  opacity: 0;
+}
+
+@media (max-width: 600px) {
+  .completion-cover {
+    height: 8.5%;
+  }
+}
+
+/* Page 3: completion message is a separate HTML element and starts hidden. */
+.color-completion-message {
+  margin: 10px auto 0;
+  padding: 12px 16px;
+  width: min(90%, 520px);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.94);
+  color: var(--orange);
+  font-size: clamp(1rem, 2.6vw, 1.3rem);
+  font-weight: 900;
+  text-align: center;
+}
+
+/* PAGE 4: Match the Shapes */
+.shapes-page {
+  padding: clamp(4px, 1vw, 10px);
+}
+
+.shapes-content {
+  max-width: 768px;
+}
+
+.original-shapes-interactive {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.shape-hotspots {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.shape-hotspot {
+  position: absolute;
+  display: block;
+  min-width: 42px;
+  min-height: 42px;
+  padding: 0;
+  margin: 0;
+  border: 3px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.shape-hotspot:hover {
+  border-color: rgba(7,84,166,0.5);
+  background: rgba(255,255,255,0.08);
+}
+
+.shape-hotspot.selected {
+  border-color: var(--blue);
+  background: rgba(7,84,166,0.12);
+}
+
+.shape-hotspot.matched {
+  border-color: #238636;
+  background: rgba(35,134,54,0.12);
+}
+
+.shape-hotspot.wrong {
+  border-color: #c62828;
+  background: rgba(198,40,40,0.14);
+}
+
+.shape-completion-cover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 8.2%;
+  z-index: 20;
+  background: var(--cream);
+  pointer-events: none;
+}
+
+.shape-completion-cover.revealed {
+  opacity: 0;
+}
+
+.shape-feedback {
+  min-height: 30px;
+  margin: 8px auto 0;
+  font-weight: 900;
+  text-align: center;
+}
+
+.shape-feedback.try {
+  color: #b33a00;
+}
+
+@media (max-width: 600px) {
+  .original-shapes-interactive {
+    border-radius: 10px;
+  }
+
+  .shape-hotspot {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+/* Interactive pages: disabled Next button clearly shows that the activity must be completed. */
+#nextBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* PAGE 5: Digital tracing */
+.tracing-page {
+  padding: clamp(4px, 1vw, 10px);
+}
+
+.tracing-content {
+  max-width: 768px;
+}
+
+.tracing-board {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 14px;
+  touch-action: none;
+  user-select: none;
+}
+
+.tracing-board .original-page-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.trace-canvas {
+  position: absolute;
+  z-index: 10;
+  display: block;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.trace-triangle { left: 8.0%; top: 23.0%; width: 31%; height: 20%; }
+.trace-star     { left: 61.0%; top: 23.0%; width: 31%; height: 20%; }
+.trace-circle   { left: 8.0%; top: 49.0%; width: 31%; height: 20%; }
+.trace-square   { left: 61.0%; top: 49.0%; width: 31%; height: 20%; }
+
+.trace-complete {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translateX(-50%);
+  z-index: 30;
+  width: min(82%, 540px);
+  padding: 11px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.94);
+  color: var(--orange);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 900;
+  text-align: center;
+  pointer-events: none;
+}
+
+.trace-feedback {
+  min-height: 30px;
+  margin: 8px auto 0;
+  font-weight: 800;
+  text-align: center;
+}
+
+.trace-feedback.try {
+  color: #b33a00;
+}
+
+@media (max-width: 600px) {
+  .tracing-board {
+    border-radius: 10px;
+  }
+}
+
+.trace-tip {
+  margin: 2px auto 8px;
+  font-size: clamp(0.82rem, 2vw, 1rem);
+  font-weight: 700;
+  text-align: center;
+  opacity: 0.82;
+}
+
+/* PAGE 6: Color & Count */
+.coloring-page {
+  padding: clamp(4px, 1vw, 10px);
+}
+
+.coloring-content {
+  max-width: 768px;
+}
+
+.coloring-board {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 14px;
+  user-select: none;
+}
+
+.coloring-board .original-page-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.color-palette {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  z-index: 30;
+  display: flex;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.94);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+.palette-color {
+  width: 34px;
+  height: 34px;
+  border: 3px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.palette-color.red { background: #ef233c; }
+.palette-color.blue { background: #1464b4; }
+.palette-color.yellow { background: #f6c744; }
+.palette-color.green { background: #2e9b57; }
+
+.palette-color.selected {
+  outline: 3px solid #333;
+  outline-offset: 2px;
+}
+
+.color-targets {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.color-target {
+  position: absolute;
+  min-width: 45px;
+  min-height: 45px;
+  padding: 0;
+  border: 3px solid transparent;
+  border-radius: 18px;
+  background: transparent;
+  pointer-events: auto;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.color-target:hover,
+.color-target.selected {
+  border-color: rgba(7,84,166,0.45);
+  background: rgba(255,255,255,0.10);
+}
+
+.color-target.colored {
+  border-color: #238636;
+  background: rgba(35,134,54,0.10);
+}
+
+.color-count-feedback,
+.color-count-result {
+  min-height: 30px;
+  margin: 8px auto 0;
+  text-align: center;
+  font-weight: 800;
+}
+
+.color-count-result {
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.94);
+  color: var(--orange);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 900;
+}
+
+@media (max-width: 600px) {
+  .palette-color {
+    width: 31px;
+    height: 31px;
+  }
+}
+
+/* PAGE 6 FINAL: precise shape coloring */
+.coloring-page {
+  padding: clamp(4px, 1vw, 10px);
+}
+.coloring-content {
+  max-width: 768px;
+}
+.coloring-board {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 14px;
+  user-select: none;
+}
+.coloring-board .original-page-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+.shape-color-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  overflow: visible;
+}
+.paint-shape {
+  fill: transparent;
+  fill-opacity: 0;
+  stroke: transparent;
+  stroke-width: 5;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  pointer-events: all;
+  transition: fill-opacity .12s ease;
+}
+.paint-shape:hover,
+.paint-shape:focus {
+  stroke: rgba(7,84,166,.65);
+  stroke-width: 6;
+  outline: none;
+}
+.paint-shape.colored {
+  stroke: rgba(35,134,54,.9);
+  stroke-width: 5;
+}
+.color-palette {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  margin: 10px auto 6px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 3px 10px rgba(0,0,0,.12);
+}
+.palette-color {
+  width: 36px;
+  height: 36px;
+  border: 3px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.palette-color.red { background:#ef233c; }
+.palette-color.blue { background:#1464b4; }
+.palette-color.yellow { background:#f6c744; }
+.palette-color.green { background:#2e9b57; }
+.palette-color.selected {
+  outline: 3px solid #333;
+  outline-offset: 2px;
+}
+.count-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 8px auto;
+  font-weight: 900;
+}
+.count-area label {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+}
+#shapeCountInput {
+  width: 90px;
+  min-height: 42px;
+  padding: 5px 8px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.check-count-btn {
+  min-height: 42px;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--blue);
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.color-count-feedback {
+  min-height: 28px;
+  margin: 8px auto 0;
+  text-align: center;
+  font-weight: 800;
+}
+.color-count-result {
+  margin: 8px auto 0;
+  padding: 11px 14px;
+  width: min(92%, 560px);
+  border-radius: 14px;
+  background: rgba(255,255,255,.96);
+  color: var(--orange);
+  font-size: clamp(1rem,2.5vw,1.25rem);
+  font-weight: 900;
+  text-align: center;
+}
+@media (max-width:600px) {
+  .palette-color { width:32px; height:32px; }
+  .color-palette { gap:7px; }
+}
+
+/* PAGE 6 ALIGNMENT FIX: six actual shapes, no rectangular click zones */
+.coloring-board {
+  position: relative !important;
+}
+.shape-color-layer {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 20 !important;
+  pointer-events: none;
+}
+.paint-shape {
+  pointer-events: all !important;
+  fill: transparent;
+  fill-opacity: 0;
+  stroke: transparent;
+  stroke-width: 5;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+.paint-shape:hover,
+.paint-shape:focus {
+  stroke: rgba(7,84,166,.65);
+  stroke-width: 6;
+  outline: none;
+}
+.paint-shape.colored {
+  stroke-width: 5;
+}
+.color-palette {
+  position: static !important;
+  transform: none !important;
+  margin: 10px auto 6px !important;
+}
+
+/* PAGE 7: Quick Colors & Shapes Quiz */
+.quiz-page { padding: clamp(4px,1vw,10px); }
+.quiz-content { max-width: 768px; }
+.quiz-board {
+  position:relative;
+  width:100%;
+  margin:0 auto;
+  overflow:hidden;
+  border-radius:14px;
+}
+.quiz-board .original-page-art {
+  display:block;
+  width:100%;
+  height:auto;
+  position:relative;
+  z-index:1;
+  pointer-events:none;
+}
+.quiz-overlay {
+  position:absolute;
+  inset:0;
+  z-index:20;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  pointer-events:none;
+  padding:0 7% 7%;
+}
+.quiz-question {
+  width:min(94%,680px);
+  padding:14px 16px;
+  border-radius:18px;
+  background:rgba(255,255,255,.95);
+  box-shadow:0 4px 14px rgba(0,0,0,.12);
+  text-align:center;
+  pointer-events:auto;
+}
+.quiz-number {
+  font-size:clamp(.85rem,2vw,1rem);
+  font-weight:900;
+}
+.quiz-prompt {
+  margin:5px 0 10px;
+  font-size:clamp(1rem,2.6vw,1.25rem);
+  font-weight:900;
+}
+.quiz-options {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+}
+.quiz-option {
+  min-width:100px;
+  min-height:44px;
+  padding:8px 13px;
+  border:0;
+  border-radius:12px;
+  background:var(--blue);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.quiz-option.color-red { background:#ef233c; }
+.quiz-option.color-blue { background:#1464b4; }
+.quiz-option.color-yellow { background:#f6c744; color:#222; }
+.quiz-option.color-green { background:#2e9b57; }
+.quiz-option:disabled { cursor:default; opacity:.75; }
+.quiz-feedback { min-height:24px; margin-top:7px; font-weight:900; }
+.quiz-feedback.correct { color:#238636; }
+.quiz-feedback.wrong { color:#b33a00; }
+.quiz-progress,.quiz-result {
+  margin:8px auto;
+  text-align:center;
+  font-weight:900;
+}
+.quiz-result {
+  width:min(92%,560px);
+  padding:11px;
+  border-radius:14px;
+  background:rgba(255,255,255,.96);
+  color:var(--orange);
+}
+
+/* PAGE 7 FINAL: original questions remain visible; only answers are interactive */
+.original-quiz-board { position:relative !important; }
+.original-quiz-board .original-page-art {
+  display:block;
+  width:100%;
+  height:auto;
+  pointer-events:none;
+}
+.quiz-choice-layer {
+  position:absolute;
+  inset:0;
+  z-index:30;
+  pointer-events:none;
+}
+.quiz-hotspot {
+  position:absolute;
+  padding:0;
+  margin:0;
+  border:2px solid transparent;
+  border-radius:9px;
+  background:transparent;
+  color:transparent;
+  font-size:1px;
+  cursor:pointer;
+  pointer-events:auto;
+  touch-action:manipulation;
+}
+.quiz-hotspot:hover,
+.quiz-hotspot:focus {
+  border-color:rgba(20,100,180,.55);
+  background:rgba(255,255,255,.10);
+  outline:none;
+}
+.quiz-hotspot.selected {
+  border-color:rgba(20,100,180,.9);
+  background:rgba(20,100,180,.12);
+}
+.quiz-hotspot.correct {
+  border-color:rgba(35,134,54,.95);
+  background:rgba(35,134,54,.13);
+}
+.quiz-hotspot.wrong {
+  border-color:rgba(190,55,35,.95);
+  background:rgba(190,55,35,.10);
+}
+.quiz-feedback-bar {
+  width:min(92%,650px);
+  min-height:32px;
+  margin:7px auto;
+  padding:7px 10px;
+  box-sizing:border-box;
+  border-radius:12px;
+  background:rgba(255,255,255,.96);
+  text-align:center;
+  font-weight:900;
+}
+.quiz-feedback-bar.correct { color:#238636; }
+.quiz-feedback-bar.wrong { color:#b33a00; }
+
+/* Page 7 hotspot alignment final */
+.quiz-hotspot {
+  box-sizing:border-box;
+  background:transparent !important;
+  color:transparent !important;
+  border:2px solid transparent !important;
+}
+.quiz-hotspot:hover,
+.quiz-hotspot:focus {
+  background:rgba(20,100,180,.08) !important;
+  border-color:rgba(20,100,180,.55) !important;
+}
+.quiz-hotspot.selected {
+  background:rgba(20,100,180,.12) !important;
+  border-color:rgba(20,100,180,.8) !important;
+}
+.quiz-hotspot.correct {
+  background:rgba(35,134,54,.12) !important;
+  border-color:rgba(35,134,54,.85) !important;
+}
+.quiz-hotspot.wrong {
+  background:rgba(190,55,35,.10) !important;
+  border-color:rgba(190,55,35,.85) !important;
+}
+
+/* Page 7: final answer-only hotspot positioning */
+.quiz-hotspot { min-width:0 !important; min-height:0 !important; }
+
+/* Page 7 final: answer hotspots only */
+#page-7 .quiz-hotspot { line-height:1; min-width:0; }
+#page-7 .quiz-choice-layer { overflow:visible; }
+
+/* Final Page 7 cleanup */
+#page-7 .quiz-hotspot { z-index:31; }
+#page-7 .quiz-hotspot:hover, #page-7 .quiz-hotspot:focus,
+#page-7 .quiz-hotspot.selected, #page-7 .quiz-hotspot.correct,
+#page-7 .quiz-hotspot.wrong { border-radius:8px; }
+
+/* PAGE 8: keep the original booklet page intact and responsive */
+.original-static-page {
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  padding:0;
+}
+.full-page-art {
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  border-radius:14px;
+}
+
+/* PAGE 9: source-faithful certificate with responsive interactive fields */
+.certificate-page {
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+  padding:0;
+}
+.certificate-board {
+  position:relative;
+  width:100%;
+  margin:0 auto;
+}
+.certificate-board .full-page-art {
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:14px;
+}
+.certificate-hotspot {
+  position:absolute;
+  z-index:20;
+  box-sizing:border-box;
+  border:2px solid rgba(20,100,180,.22);
+  border-radius:8px;
+  background:rgba(255,255,255,.82);
+  text-align:center;
+  font-family:inherit;
+  font-weight:700;
+  color:#222;
+  outline:none;
+}
+.certificate-hotspot:focus {
+  border-color:rgba(20,100,180,.8);
+  box-shadow:0 0 0 3px rgba(20,100,180,.12);
+}
+.certificate-name {
+  left:34%;
+  top:83.3%;
+  width:32%;
+  height:4.0%;
+  font-size:clamp(.65rem,1.6vw,1rem);
+}
+.certificate-date {
+  left:46%;
+  top:89.0%;
+  width:17%;
+  height:3.7%;
+  font-size:clamp(.6rem,1.4vw,.9rem);
+}
+.certificate-actions {
+  display:flex;
+  justify-content:center;
+  padding:10px 0 2px;
+}
+#page-9 #printCertificateBtn {
+  border:0;
+  border-radius:12px;
+  padding:10px 18px;
+  background:var(--blue);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+@media (max-width:600px) {
+  .certificate-hotspot {
+    border-width:1px;
+    border-radius:5px;
+  }
+  .certificate-actions { padding-top:7px; }
+  #page-9 #printCertificateBtn { padding:8px 13px; font-size:.82rem; }
+}
+@media print {
+  body * { visibility:hidden !important; }
+  #page-9, #page-9 * { visibility:visible !important; }
+  #page-9 { position:absolute; left:0; top:0; width:100%; }
+  #page-9 .certificate-actions { display:none !important; }
+  .certificate-hotspot {
+    border-color:transparent !important;
+    background:transparent !important;
+    box-shadow:none !important;
+  }
+}
+
+/* PAGE 9 FINAL ALIGNMENT: fields sit on the original certificate blanks */
+#page-9 .certificate-name {
+  left:34%;
+  top:71.1%;
+  width:32%;
+  height:3.7%;
+}
+#page-9 .certificate-date {
+  left:46%;
+  top:75.8%;
+  width:17%;
+  height:3.5%;
+}
+#page-9 .certificate-actions {
+  position:relative;
+  z-index:40;
+}
+
+/* PAGE 9 VERIFIED AGAINST ORIGINAL ARTWORK COORDINATES */
+#page-9 .certificate-name {
+  left:34%;
+  top:81.2%;
+  width:32%;
+  height:3.5%;
+}
+#page-9 .certificate-date {
+  left:46%;
+  top:87.0%;
+  width:17%;
+  height:3.3%;
+}
+
+/* PAGE 9 FINAL POLISH — certificate fields */
+#page-9 .certificate-name {
+  left:33%;
+  top:80.35%;
+  width:34%;
+  height:4.2%;
+  padding:2px 8px;
+  font-size:clamp(.85rem,2.15vw,1.05rem);
+  line-height:1.2;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(20,100,180,.20);
+}
+#page-9 .certificate-date {
+  left:43%;
+  top:86.15%;
+  width:22%;
+  height:4.0%;
+  padding:2px 7px;
+  font-size:clamp(.78rem,1.9vw,.98rem);
+  line-height:1.2;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(20,100,180,.20);
+}
+#page-9 .certificate-name:focus,
+#page-9 .certificate-date:focus {
+  background:#fff;
+  border-color:rgba(20,100,180,.75);
+}
+@media print {
+  #page-9 .certificate-name,
+  #page-9 .certificate-date {
+    font-size:12pt;
+    background:transparent !important;
+    border-color:transparent !important;
+    color:#222 !important;
+  }
+}
